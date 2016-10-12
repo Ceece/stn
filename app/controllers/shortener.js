@@ -1,8 +1,20 @@
 'use strict';
 
+var validator = require('validator');
+var shortid = require('shortid');
+
 function shortener (db) {
    this.new = function(req, res) {
       var original_url = req.originalUrl.replace(/^\/new\/(.+)$/, '$1');
+
+      var validatorOptions = {
+         require_protocol: true,
+         protocols: ['http','https']
+      };
+
+      if (validator.isURL(original_url, validatorOptions) == false)
+         throw new Error('Oops!! Url is wrong')
+
       var shorten = shortid.generate();
       var url = {
          original_url: original_url,
@@ -12,7 +24,7 @@ function shortener (db) {
          if (err) throw err
             res.json({
                original_url: url.original_url,
-               short_url: app.set('app_url') + '/' + url.shorten
+               short_url: process.env.APP_URL + '/' + url.shorten
             });
       });
    };

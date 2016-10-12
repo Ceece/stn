@@ -28,6 +28,7 @@
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "mongodb": "^2.0.42",
-    "shortid": "^2.2.6"
+    "shortid": "^2.2.6",
+    "validator": "^6.0.0"
   }
 }
