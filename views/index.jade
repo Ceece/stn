@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/css/main.css')
+    body
+        h1 FreeCodeCamp API Basejump: URL Shortener Microservice
+        quote
+            p User stories:
+            ul
+                li I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
+                li If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.
+                li When I visit that shortened URL, it will redirect me to my original link.
+
+        h3 Example creation usage:
+        code
+            p #{appUrl}/new/http://google.co.th
+        h3 Example creation output
+        code
+            p {"original_url":"http://google.co.th","short_url":"#{appUrl}/B1Js5gn0"}
+        h3 Usage:
+        code
+            p #{appUrl}/B1Js5gn0
+        h3 Will redirect to:
+        code
+            p http://google.co.th/
