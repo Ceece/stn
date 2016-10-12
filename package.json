@@ -1,17 +1,17 @@
 {
-  "name": "clementinejs",
+  "name": "stn",
   "version": "1.0.2",
-  "description": "A light-weight MEAN stack boilerplate.",
+  "description": "URL Shortener Microservice.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnstonbl01/clementinejs"
+    "url": "git+https://github.com/Ceece/stn"
   },
-  "homepage": "http://johnstonbl01.github.io/clementinejs/",
-  "bugs": "https://github.com/johnstonbl01/clementinejs/issues",
+  "homepage": "https://stn.herokuapp.com",
+  "bugs": "https://github.com/Ceece/stn/issues",
   "keywords": [
     "MEAN",
     "MongoDB",
