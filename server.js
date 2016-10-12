@@ -7,7 +7,11 @@ var routes = require('./app/routes/index.js');
 
 var app = express();
 
-require('dotenv').config()
+try {
+   require('dotenv').config()
+} catch (e) {
+
+}
 
 var url = process.env.MONGODB || 'mongodb://localhost:27017/clementinejs';
 var port = process.env.PORT || 3000;
