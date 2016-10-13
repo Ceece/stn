@@ -22,20 +22,23 @@ function shortener (db) {
       }
       db.collection('urls').insert(url, function(err, data) {
          if (err) throw err
-            res.json({
-               original_url: url.original_url,
-               short_url: process.env.APP_URL + '/' + url.shorten
-            });
+         res.json({
+            original_url: url.original_url,
+            short_url: process.env.APP_URL + '/' + url.shorten
+         });
       });
    };
 
    this.redirect = function(req, res) {
-      db.collection('urls').findOne({
-         shorten: req.params.shorten
-      }, function(err, url) {
-         if (err) throw err
-            res.redirect(url.original_url)
-      })
+         db.collection('urls').findOne({
+            shorten: req.params.shorten
+         }, function(err, url) {
+            if (err) throw err
+            if (url)
+               res.redirect(url.original_url)
+            else
+               res.end(req.params.shorten + ' is not found')
+         })
    };
 }
 
