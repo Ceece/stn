@@ -2,30 +2,36 @@ doctype html
 html
     head
         title URL Shortener Microservice
-        link(rel='stylesheet', href='/css/main.css')
+        link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css')
     body
-        h1 FreeCodeCamp API Basejump: URL Shortener Microservice
-        quote
-            p User stories:
-            ul
-                li I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
-                li If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.
-                li When I visit that shortened URL, it will redirect me to my original link.
+        div(class='jumbotron')
+            div(class='container')
+                h1 FreeCodeCamp API Basejump: URL Shortener Microservice
+                p User stories:
+                ul
+                    li I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
+                    li If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.
+                    li When I visit that shortened URL, it will redirect me to my original link.
 
-        h3 Example creation usage:
-        code
-            p #{appUrl}/new/http://google.co.th
-        h3 Example creation output
-        code
-            p {"original_url":"http://google.co.th","short_url":"#{appUrl}/B1Js5gn0"}
-        h3 Usage:
-        code
-            p #{appUrl}/B1Js5gn0
-        h3 Will redirect to:
-        code
-            p http://google.co.th/
+        div(class='container')
+            div(class='row')
+                div(class='col-lg-7')
+                    h5 Example creation usage:
+                    pre #{appUrl}/new/http://google.co.th
+                    h5 Example creation output
+                    pre(style='white-space:pre;')
+                        | {
+                        |     "original_url":"http://google.co.th",
+                        |     "short_url":"#{appUrl}/B1Js5gn0"
+                        | }
+                    h5 Usage:
+                    pre #{appUrl}/B1Js5gn0
+                    h5 Will redirect to:
+                    pre http://google.co.th/
 
-        p Created by
-        div(class="github-card" data-github="Ceece" data-width="400" data-height="150" data-theme="default")
+                div(class='col-lg-5')
+                    h5 Created by
+                    div(class="github-card" data-github="Ceece" data-width="400" data-height="150" data-theme="default")
+
 
         script(src="//cdn.jsdelivr.net/github-cards/latest/widget.js")
