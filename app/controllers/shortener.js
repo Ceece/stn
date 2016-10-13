@@ -12,21 +12,24 @@ function shortener (db) {
          protocols: ['http','https']
       };
 
-      if (validator.isURL(original_url, validatorOptions) == false)
-         throw new Error('Oops!! Url is wrong')
-
-      var shorten = shortid.generate();
-      var url = {
-         original_url: original_url,
-         shorten: shorten
-      }
-      db.collection('urls').insert(url, function(err, data) {
-         if (err) throw err
+      if (validator.isURL(original_url, validatorOptions) == false) {
          res.json({
-            original_url: url.original_url,
-            short_url: process.env.APP_URL + '/' + url.shorten
+            error: "Wrong url format, make sure you have a valid protocol and real site."
          });
-      });
+      } else {
+         var shorten = shortid.generate();
+         var url = {
+            original_url: original_url,
+            shorten: shorten
+         }
+         db.collection('urls').insert(url, function(err, data) {
+            if (err) throw err
+               res.json({
+                  original_url: url.original_url,
+                  short_url: process.env.APP_URL + '/' + url.shorten
+               });
+         });
+      }
    };
 
    this.redirect = function(req, res) {
@@ -37,7 +40,9 @@ function shortener (db) {
             if (url)
                res.redirect(url.original_url)
             else
-               res.end(req.params.shorten + ' is not found')
+               res.json({
+                  error: req.params.shorten + ' is not found.'
+               });
          })
    };
 }
